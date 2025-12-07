@@ -4,7 +4,7 @@ const menuLinks = hamburgerNav ? hamburgerNav.querySelectorAll("a") : [];
 
 // ------------ INIT ------------
 export function initNavigation() {
-  updateHeaderHeight();
+  updateOverlayPosition();
 
   menuLinks.forEach((link) => {
     link.tabIndex = -1;
@@ -26,15 +26,16 @@ export function initNavigation() {
       closeMenu(true); 
     }
   });
-
+  
    menuLinks.forEach((link) => {
     link.addEventListener("click", () => {
       closeMenu(true);
     });
   });
 
-  window.addEventListener("load", updateHeaderHeight);
-  window.addEventListener("resize", updateHeaderHeight);
+  window.addEventListener("load", updateOverlayPosition);
+  window.addEventListener("resize", updateOverlayPosition);
+  window.addEventListener("scroll", updateOverlayPosition);
 }
 
 // ---------------- MENÜ LOGIK ----------------
@@ -69,9 +70,13 @@ function closeMenu(focusBurger = false) {
 }
 
 // ---------------- HEADERHÖHE ---------------
-function updateHeaderHeight() {
+function updateOverlayPosition() {
   const header = document.querySelector("header");
-  const height = header.offsetHeight;
-  document.documentElement.style.setProperty("--header-height", height + "px");
+
+  const rect = header.getBoundingClientRect();
+  const headerBottom = rect.bottom;
+
+  hamburgerNav.style.top = headerBottom + "px";
+  hamburgerNav.style.height = `calc(100vh - ${headerBottom}px)`;
 } 
 
