@@ -1,46 +1,72 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sophia Wild Portfolio</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/main.js"></script>
-</head>
-<body>
-    <header>
-        <div>
-            <a href="">Springe zum Hauptinhalt</a>
-        </div>
-        <nav aria-label="Portfolio menu">
-            <a href="#about">Über mich</a>
-            <a href="#projects">Projekte</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Kontakt</a>
-        </nav>
-        <div class="heading">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!--    HEADER   -->
+      <header>
+        <div class="header-content">
+          <div class="jump-maincontent">
+            <a href="#about">Springe zum Hauptinhalt</a>
+          </div>
+          <!--    HEADING   -->
+          <div class="heading">
             <h1>Sophia Wild</h1>
-            <p>Mendieninformatikerin</p>
+            <p>Medieninformatikerin</p>
+          </div>
         </div>
-    </header>
-    <main>
+        <!--    NAVIGATION   -->
+        <div class="burger-container">
+          <button class="burger-menue" aria-label="Menü öffnen" aria-controls="main-menu" aria-expanded="false">
+            <span class="line" aria-hidden="true"></span>
+            <span class="line" aria-hidden="true"></span>
+            <span class="line" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="nav-overlay" id="main-menu" aria-hidden="true" inert>
+          <nav class="nav-main" aria-label="Portfolio Menü">
+            <ul>
+              <li><a href="#about">Über mich</a></li>
+              <li><a href="#documents">Dokumente</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#contact">Kontakt</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <!--    MAIN   -->
+      <main>
         <div id="about">
-            <h2>Hi, ich bin Sophia</h2>
+          <h2>Hi, ich bin Sophia</h2>
         </div>
         <div id="projects">
-            <h2>Meine Projekte</h2>
+          <h2>Meine Projekte</h2>
         </div>
         <div id="skills">
-            <h2>Meine Skills</h2>
+          <h2>Meine Skills</h2>
         </div>
         <div id="contact">
-            <h2>Meine Kontaktdaten</h2>
+          <h2>Meine Kontaktdaten</h2>
         </div>
-    </main>
-    <footer>
+      </main>
+      <!--    FOOTER   -->
+      <footer>
         <div>
-            <p>© 2025 Sophia Wild - Digitales Portfolio</p>
+          <p>© 2025 Sophia Wild - Digitales Portfolio</p>
         </div>
-    </footer>
-</body>
+      </footer>
+    </div>
+    <script type="module" src="./js/main.js"></script>
+  </body>
 </html>
