@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sophia Wild Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="./svg/Favicon2.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!--    HEADER   -->
+      <header>
+        <div class="header-content padding">
+          <div class="jump-maincontent">
+            <a href="#about">Springe zum Hauptinhalt</a>
+          </div>
+          <!--    HEADING   -->
+          <div class="header-logo">
+            <div class="logo-container">
+              <img
+                src="./svg/Logo1.svg"
+                alt="Logo von Sophia Wild"
+                class="logo logo-default"
+              />
+              <img
+                src="./svg/Logo2.svg"
+                alt=""
+                aria-hidden="true"
+                class="logo logo-hover"
+              />
+            </div>
+          </div>
+          <div class="header-title">
+            <img
+              src="./svg/Schriftzug.svg"
+              alt="Sophia Wild"
+              class="schriftzug"
+            />
+            <h1>Portfolio</h1>
+          </div>
+          <!--    NAVIGATION   -->
+          <div class="burger-container">
+            <button
+              class="burger-menue"
+              aria-label="Menü öffnen"
+              aria-controls="main-menu"
+              aria-expanded="false"
+            >
+              <span class="line" aria-hidden="true"></span>
+              <span class="line" aria-hidden="true"></span>
+              <span class="line" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="nav-overlay" id="main-menu" aria-hidden="true" inert>
+            <nav class="nav-main" aria-label="Portfolio Menü">
+              <ul>
+                <li><a href="#about">Das bin ich</a></li>
+                <li><a href="#documents">Dokumente</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <!--    MAIN   -->
+      <main>
+        <div class="block-one">
+          <div id="about" class="about padding">
+            <div class="about-heading">
+              <h2>Das bin ich</h2>
+              <p>Medieninformatikerin und Designerin</p>
+            </div>
+            <div class="about-arrow">
+              <img src="./svg/Pfeil.svg" alt="" class="arrow" />
+            </div>
+            <div class="about-image">
+              <img
+                src="./svg/Bilderrahmen.svg"
+                alt="Foto von Sophia Wild"
+                class="picture-frame"
+              />
+            </div>
+            <div class="about-content">
+              <h3>Hi, ich bin Sophia</h3>
+              <p>
+                2025 habe ich meinen Bachelor in Medieninformatik nun endlich
+                abgeschlossen und in den letzten Jahren sowohl im Studium als
+                auch in realen Projekten intensiv an meinen Skills in der
+                Webentwicklung gearbeitet.
+              </p>
+              <p>
+                Dieses Portfolio ist komplett mit HTML, CSS und JavaScript
+                selbst umgesetzt und zeigt meine aktuellen Arbeiten, meine
+                Stärken sowie einen persönlichen Einblick in meine
+                Arbeitsweise.<br />
+                Ich liebe es, Ideen digital zum Leben zu erwecken, von der
+                ersten Konzeptidee bis zur fertigen Website.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="block-two">
+          <div class="circle-border" aria-hidden="true">
+            <svg class="circle-row"></svg>
+          </div>
+          <div id="documents" class="padding">
+            <h2>Meine Dokumente</h2>
+          </div>
+        </div>
+        <div class="block-tree">
+          <div id="skills" class="padding">
+            <h2>Meine Skills</h2>
+          </div>
+          <div id="contact" class="padding">
+            <h2>Meine Kontaktdaten</h2>
+          </div>
+        </div>
+      </main>
+      <!--    FOOTER   -->
+      <footer>
+        <div>
+          <p>© 2025 Sophia Wild - Digitales Portfolio</p>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
