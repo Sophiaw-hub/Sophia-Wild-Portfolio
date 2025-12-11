@@ -60,17 +60,15 @@ header {
 .header-content {
   display: grid;
   grid-template-columns: 0fr auto 0fr;
-  grid-template-rows: auto auto;
   grid-template-areas:
     "skip skip skip"
     "logo title burger";
   align-items: center;
-  gap: 1em 1em;
+  gap: 1.5em 1.5em;
 }
 .jump-maincontent {
   grid-area: skip;
   align-self: start;
-  padding: 0 0 1em 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .jump-maincontent a {
@@ -88,12 +86,7 @@ header {
   background-color: #dfd6a4;
   color: #26100b;
 }
-header.scrolled .jump-maincontent {
-  opacity: 0;
-  transform: translateY(-10px);
-}
 .header-title {
-  padding: 1em 1em 0 1em;
   grid-area: title;
   display: flex;
   flex-direction: column;
@@ -108,11 +101,6 @@ header.scrolled .jump-maincontent {
   margin: 0.3rem 0 0;
   color: #dfd6a4;
   font-size: 24px;
-}
-header.scrolled .header-title h1 {
-  font-size: 18px;
-  transform: translateY(2px);
-  transition: 0.3s ease-in-out;
 }
 /* ------ logo ------ */
 .header-logo {
@@ -146,7 +134,6 @@ header.scrolled .header-title h1 {
 /* ------ navigation ------ */
 .burger-container {
   grid-area: burger;
-  justify-self: end;
   align-self: center;
 }
 .burger-menue {
@@ -189,6 +176,9 @@ button.burger-menue:focus {
   transition: transform 0.4s ease-in-out;
   z-index: 10;
 }
+.nav-overlay.isOpen {
+  transform: translateX(0);
+}
 .nav-main {
   position: relative;
   text-align: right;
@@ -203,19 +193,24 @@ button.burger-menue:focus {
   font-weight: 900;
   color: #26100b;
   display: block;
-  transition: 0.3s;
 }
 .nav-main a:hover,
 .nav-main a:focus {
   color: #808249;
 }
-.nav-overlay.isOpen {
-  transform: translateX(0);
-}
 
 /* ------ main ------ */
 main {
   grid-area: content;
+}
+.fade-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .circle-border {
   width: 100%;
@@ -235,11 +230,12 @@ main {
 }
 .about {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "about-heading about-heading"
     "about-image about-arrow"
     "about-content about-content";
+  gap: 1em;
 }
 .about-heading {
   grid-area: about-heading;
@@ -263,7 +259,7 @@ main {
 }
 .about-content {
   grid-area: about-content;
-    max-width: 450px;
+  max-width: 450px;
 }
 .block-two {
   background-color: #dfd6a4;
@@ -293,13 +289,15 @@ footer {
   p {
     font-size: 18px;
   }
+  /* ------ header ------ */
   .header-content {
-    padding: 3em;
+    padding: 2em;
     grid-template-columns: 2fr 4fr 2fr;
     grid-template-areas:
       "skip title ."
       ". logo ."
-      "burger burger burger";
+      ". nav .";
+    gap: 1em;
   }
   .jump-maincontent {
     margin-top: 0.5em;
@@ -315,6 +313,42 @@ footer {
     width: 120px;
     height: 120px;
   }
+  .burger-container {
+    display: none;
+  }
+  .nav-overlay {
+    grid-area: nav;
+    position: static;
+    transform: none;
+    transition: none;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    overflow: visible;
+  }
+  .nav-main {
+    text-align: center;
+  }
+  .nav-main ul {
+    display: flex;
+    gap: 3em;
+    justify-content: center;
+    align-items: center; 
+    margin: 0;
+    padding: 0;
+  }
+  .nav-main a {
+    font-size: 18px;
+    padding: 0.5em 0;
+    display: inline-block;
+    color: #dfd6a4;
+  }
+  /* ------ main ------ */
+  .fade-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
   .about {
     display: grid;
     grid-template-columns: 4fr 1fr 4fr;
@@ -324,7 +358,7 @@ footer {
   }
   .about-heading {
     grid-area: about-heading;
-    padding-bottom: 2em;
+    padding-bottom: 1em;
     justify-self: center;
     text-align: center;
   }
@@ -332,6 +366,6 @@ footer {
     justify-content: right;
   }
   .about-image img {
-    max-width: 350px;
+    max-width: 300px;
   }
 }

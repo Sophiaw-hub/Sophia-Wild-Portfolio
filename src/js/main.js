@@ -1,7 +1,7 @@
 import { initNavigation } from "./navigation.js";
-import { initScrollHeader } from "./scrollHeader.js";
 import { initCircleBorder } from "./circleBorder.js";
+import { sectionAnimation } from "./sectionAnimation.js";
 
 initNavigation();
-initScrollHeader();
-initCircleBorder()
+initCircleBorder();
+sectionAnimation();
