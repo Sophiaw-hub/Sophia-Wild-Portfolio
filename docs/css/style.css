@@ -26,7 +26,16 @@ h1 {
   font-weight: 900;
 }
 h2 {
+  font-size: 36px;
   font-weight: 900;
+}
+h3 {
+  font-size: 26px;
+  font-weight: 900;
+}
+h4 {
+  font-size: 20px;
+  font-weight: 700;
 }
 p {
   font-size: 16px;
@@ -60,17 +69,15 @@ header {
 .header-content {
   display: grid;
   grid-template-columns: 0fr auto 0fr;
-  grid-template-rows: auto auto;
   grid-template-areas:
     "skip skip skip"
     "logo title burger";
   align-items: center;
-  gap: 1em 1em;
+  gap: 1.5em 1.5em;
 }
 .jump-maincontent {
   grid-area: skip;
   align-self: start;
-  padding: 0 0 1em 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .jump-maincontent a {
@@ -88,12 +95,7 @@ header {
   background-color: #dfd6a4;
   color: #26100b;
 }
-header.scrolled .jump-maincontent {
-  opacity: 0;
-  transform: translateY(-10px);
-}
 .header-title {
-  padding: 1em 1em 0 1em;
   grid-area: title;
   display: flex;
   flex-direction: column;
@@ -108,11 +110,6 @@ header.scrolled .jump-maincontent {
   margin: 0.3rem 0 0;
   color: #dfd6a4;
   font-size: 24px;
-}
-header.scrolled .header-title h1 {
-  font-size: 18px;
-  transform: translateY(2px);
-  transition: 0.3s ease-in-out;
 }
 /* ------ logo ------ */
 .header-logo {
@@ -146,7 +143,6 @@ header.scrolled .header-title h1 {
 /* ------ navigation ------ */
 .burger-container {
   grid-area: burger;
-  justify-self: end;
   align-self: center;
 }
 .burger-menue {
@@ -189,6 +185,9 @@ button.burger-menue:focus {
   transition: transform 0.4s ease-in-out;
   z-index: 10;
 }
+.nav-overlay.isOpen {
+  transform: translateX(0);
+}
 .nav-main {
   position: relative;
   text-align: right;
@@ -203,19 +202,24 @@ button.burger-menue:focus {
   font-weight: 900;
   color: #26100b;
   display: block;
-  transition: 0.3s;
 }
 .nav-main a:hover,
 .nav-main a:focus {
   color: #808249;
 }
-.nav-overlay.isOpen {
-  transform: translateX(0);
-}
 
 /* ------ main ------ */
 main {
   grid-area: content;
+}
+.fade-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .circle-border {
   width: 100%;
@@ -229,17 +233,15 @@ main {
 .circle-row circle {
   fill: #ffffff;
 }
-.block-one {
-  display: grid;
-  justify-items: center;
-}
 .about {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "about-heading about-heading"
     "about-image about-arrow"
-    "about-content about-content";
+    "about-content about-content"
+    "about-strength about-strength";
+  gap: 1em;
 }
 .about-heading {
   grid-area: about-heading;
@@ -255,21 +257,33 @@ main {
 .about-image {
   grid-area: about-image;
   display: flex;
-  justify-content: left;
+  justify-content: right;
 }
 .about-image img {
-  max-width: 150px;
+  max-width: 250px;
   rotate: -10grad;
 }
 .about-content {
   grid-area: about-content;
-    max-width: 450px;
+}
+.about-strength {
+  grid-area: about-strength;
+}
+.strength-animation {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0em 4em;
+  text-align: center;
+  justify-content: center;
+}
+.strength-animation .ae-animation{
+  max-width: 150px;
+  margin: 0 auto;
 }
 .block-two {
   background-color: #dfd6a4;
   border-radius: 20px;
 }
-
 footer {
   grid-area: footer;
   padding: 1em;
@@ -282,24 +296,20 @@ footer {
   .about {
     grid-template-columns: 1fr 1fr;
   }
+  .about-strength {
+    text-align: center;
+  }
 }
 @media screen and (min-width: 992px) {
-  h2 {
-    font-size: 36px;
-  }
-  h3 {
-    font-size: 24px;
-  }
-  p {
-    font-size: 18px;
-  }
+  /* ------ header ------ */
   .header-content {
-    padding: 3em;
+    padding: 2em;
     grid-template-columns: 2fr 4fr 2fr;
     grid-template-areas:
       "skip title ."
       ". logo ."
-      "burger burger burger";
+      ". nav .";
+    gap: 1em;
   }
   .jump-maincontent {
     margin-top: 0.5em;
@@ -315,23 +325,63 @@ footer {
     width: 120px;
     height: 120px;
   }
+  .burger-container {
+    display: none;
+  }
+  .nav-overlay {
+    grid-area: nav;
+    position: static;
+    transform: none;
+    transition: none;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    overflow: visible;
+  }
+  .nav-main {
+    text-align: center;
+  }
+  .nav-main ul {
+    display: flex;
+    gap: 3em;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-main a {
+    font-size: 18px;
+    padding: 0.5em 0;
+    display: inline-block;
+    color: #dfd6a4;
+  }
+  /* ------ main ------ */
+  .fade-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
   .about {
     display: grid;
-    grid-template-columns: 4fr 1fr 4fr;
+    grid-template-columns: 2fr 1fr 2fr;
     grid-template-areas:
       "about-heading about-heading about-heading"
-      "about-image about-arrow about-content";
+      "about-image about-arrow about-content"
+      "about-strength about-strength about-strength";
+    gap: 2em;
+    max-width: 1400px;
+    margin: 0 auto;
   }
   .about-heading {
-    grid-area: about-heading;
-    padding-bottom: 2em;
+    padding-bottom: 1em;
     justify-self: center;
     text-align: center;
   }
-  .about-image {
-    justify-content: right;
-  }
   .about-image img {
-    max-width: 350px;
+    max-width: 300px;
+  }
+  .about-strength {
+    grid-area: about-strength;
+    margin: 0 auto;
   }
 }

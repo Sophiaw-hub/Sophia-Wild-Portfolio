@@ -26,7 +26,16 @@ h1 {
   font-weight: 900;
 }
 h2 {
+  font-size: 36px;
   font-weight: 900;
+}
+h3 {
+  font-size: 26px;
+  font-weight: 900;
+}
+h4 {
+  font-size: 20px;
+  font-weight: 700;
 }
 p {
   font-size: 16px;
@@ -224,17 +233,14 @@ main {
 .circle-row circle {
   fill: #ffffff;
 }
-.block-one {
-  display: grid;
-  justify-items: center;
-}
 .about {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     "about-heading about-heading"
     "about-image about-arrow"
-    "about-content about-content";
+    "about-content about-content"
+    "about-strength about-strength";
   gap: 1em;
 }
 .about-heading {
@@ -251,21 +257,33 @@ main {
 .about-image {
   grid-area: about-image;
   display: flex;
-  justify-content: left;
+  justify-content: right;
 }
 .about-image img {
-  max-width: 150px;
+  max-width: 250px;
   rotate: -10grad;
 }
 .about-content {
   grid-area: about-content;
-  max-width: 450px;
+}
+.about-strength {
+  grid-area: about-strength;
+}
+.strength-animation {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0em 4em;
+  text-align: center;
+  justify-content: center;
+}
+.strength-animation .ae-animation{
+  max-width: 150px;
+  margin: 0 auto;
 }
 .block-two {
   background-color: #dfd6a4;
   border-radius: 20px;
 }
-
 footer {
   grid-area: footer;
   padding: 1em;
@@ -278,17 +296,11 @@ footer {
   .about {
     grid-template-columns: 1fr 1fr;
   }
+  .about-strength {
+    text-align: center;
+  }
 }
 @media screen and (min-width: 992px) {
-  h2 {
-    font-size: 36px;
-  }
-  h3 {
-    font-size: 24px;
-  }
-  p {
-    font-size: 18px;
-  }
   /* ------ header ------ */
   .header-content {
     padding: 2em;
@@ -333,7 +345,7 @@ footer {
     display: flex;
     gap: 3em;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     margin: 0;
     padding: 0;
   }
@@ -351,21 +363,25 @@ footer {
   }
   .about {
     display: grid;
-    grid-template-columns: 4fr 1fr 4fr;
+    grid-template-columns: 2fr 1fr 2fr;
     grid-template-areas:
       "about-heading about-heading about-heading"
-      "about-image about-arrow about-content";
+      "about-image about-arrow about-content"
+      "about-strength about-strength about-strength";
+    gap: 2em;
+    max-width: 1400px;
+    margin: 0 auto;
   }
   .about-heading {
-    grid-area: about-heading;
     padding-bottom: 1em;
     justify-self: center;
     text-align: center;
   }
-  .about-image {
-    justify-content: right;
-  }
   .about-image img {
     max-width: 300px;
+  }
+  .about-strength {
+    grid-area: about-strength;
+    margin: 0 auto;
   }
 }
