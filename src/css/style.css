@@ -1,18 +1,16 @@
 :root {
   --header-height: 0px;
 }
-
-* {
+body {
+  margin: 0;
+  padding: 0;
   font-family: "Nunito", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   color: #26100b;
 }
-body {
-  margin: 0;
-  padding: 0;
-}
 .wrapper {
+  min-height: 100vh;
   display: grid;
   grid-template-areas:
     "header"
@@ -261,7 +259,8 @@ main {
 }
 .about-image img {
   max-width: 250px;
-  rotate: -10grad;
+  height: auto;
+  transform: rotate(-10deg);
 }
 .about-content {
   grid-area: about-content;
