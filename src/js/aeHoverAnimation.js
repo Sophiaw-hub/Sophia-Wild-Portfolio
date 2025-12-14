@@ -2,7 +2,8 @@ export function aeHoverAnimation() {
   const containers = document.querySelectorAll(".ae-animation");
 
   containers.forEach((container) => {
-    const path = container.dataset.src; // JSON-URL aus dem HTML lesen
+    const path = container.dataset.src;
+    const mode = container.dataset.mode || "normal";
 
     const animation = lottie.loadAnimation({
       container: container,
@@ -18,8 +19,13 @@ export function aeHoverAnimation() {
     });
 
     container.addEventListener("mouseleave", () => {
-      animation.setDirection(-1);
-      animation.play();
+      if (mode != "hold-end") {
+        animation.setDirection(-1);
+        animation.play();
+      } else {
+        animation.stop();
+        animation.goToAndStop(0, true);
+      }
     });
   });
 }
