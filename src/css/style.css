@@ -19,20 +19,22 @@ body {
 }
 .padding {
   padding: 1.5em;
+  box-sizing: border-box;
 }
 h1,
 h2,
 h3,
 h4 {
   font-family: "larken", sans-serif;
+  margin: 0;
 }
 h1 {
   font-weight: 700;
-  margin-bottom: 0px;
 }
 h2 {
   font-size: 40px;
   font-weight: 900;
+  margin-bottom: 0.5em;
 }
 h3 {
   font-size: 26px;
@@ -48,26 +50,12 @@ p {
   font-family: "Work Sans", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+  font-weight: 300;
 }
 img {
   display: block;
   max-width: 100%;
   height: auto;
-}
-button {
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 25px;
-  background-color: transparent;
-  border-color: #808249;
-  padding: 0.5em;
-  color: #808249;
-  font-weight: 700;
-}
-button:hover,
-button:focus {
-  background-color: #808249;
-  color: transparent;
 }
 
 /* ------ header ------ */
@@ -237,7 +225,6 @@ main {
 }
 .circle-border {
   display: block;
-   margin-top: -1px; /* oder -2px */
   width: 100%;
   overflow: hidden;
 }
@@ -245,6 +232,7 @@ main {
   width: 100%;
   height: auto;
   display: block;
+  margin-top: -5px;
 }
 .circle-row circle {
   fill: #ffffff;
@@ -257,7 +245,7 @@ main {
     "about-image about-arrow"
     "about-content about-content"
     "about-strength about-strength";
-  gap: 1em;
+  gap: 2em;
 }
 .about-heading {
   grid-area: about-heading;
@@ -273,7 +261,7 @@ main {
 .about-image {
   grid-area: about-image;
   display: flex;
-  justify-content: right;
+  justify-content: center;
 }
 .about-image img {
   max-width: 250px;
@@ -285,21 +273,78 @@ main {
 }
 .about-strength {
   grid-area: about-strength;
+  color: #808249;
+}
+.about-strength p {
+  color: #666830;
 }
 .strength-animation {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 0em 4em;
+  gap: 0em 3em;
   text-align: center;
   justify-content: center;
 }
 .strength-animation .ae-animation {
-  max-width: 150px;
+  max-width: 100px;
   margin: 0 auto;
 }
 .block-two {
   background-color: #dfd6a4;
-  border-radius: 20px;
+  border-radius: 25px;
+}
+.document-container {
+  width: 100%;
+}
+.documents {
+  display: flex;
+  gap: 2em;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 1.5em;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.documents::-webkit-scrollbar {
+  display: none;
+}
+.document-card {
+  scroll-snap-align: start;
+  flex: 0 0 200px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 25px;
+  padding-inline: 1.5em;
+  display: grid;
+  justify-items: center;
+}
+.product-icon {
+  padding: 1.5em;
+  width: 100px;
+  height: auto;
+}
+.documents a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-style: solid;
+  border-radius: 25px;
+  border-color: #808249;
+  padding: 0.5em;
+  color: #808249;
+  font-family: "larken";
+  font-weight: 700;
+  margin: 1em;
+}
+.documents a:hover,
+.documents a:focus-visible {
+  background-color: #808249;
+  color: #ffffff;
 }
 footer {
   grid-area: footer;
@@ -307,23 +352,32 @@ footer {
 }
 
 @media screen and (min-width: 576px) {
-  h4 {
-    margin-top: 1.33em;
+  .padding {
+    padding: 2em;
   }
   .header-title h1 {
     font-size: 36px;
   }
   .about {
     grid-template-columns: 1fr 1fr;
+    max-width: 1350px;
+    margin: 0 auto;
   }
-  .about-strength {
-    text-align: center;
+  .document-container {
+    max-width: 1350px;
+    margin: 0 auto;
+  }
+  .documents {
+    padding-inline: 0;
+    overflow-x: visible;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3em;
   }
 }
 @media screen and (min-width: 992px) {
   /* ------ header ------ */
   .header-content {
-    padding: 2em;
     grid-template-columns: 2fr 4fr 2fr;
     grid-template-areas:
       "skip title ."
@@ -392,9 +446,7 @@ footer {
       "about-heading about-heading about-heading"
       "about-image about-arrow about-content"
       "about-strength about-strength about-strength";
-    gap: 2em;
-    max-width: 1400px;
-    margin: 0 auto;
+    gap: 3em;
   }
   .about-heading {
     padding-bottom: 1em;
@@ -407,5 +459,12 @@ footer {
   .about-strength {
     grid-area: about-strength;
     margin: 0 auto;
+    text-align: center;
+  }
+  .strength-animation .ae-animation {
+    max-width: 150px;
+  }
+  .document-container {
+    text-align: center;
   }
 }
