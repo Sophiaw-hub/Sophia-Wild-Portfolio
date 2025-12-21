@@ -293,45 +293,39 @@ main {
   background-color: #dfd6a4;
   border-radius: 25px;
 }
-.document-container {
-  width: 100%;
+.slider {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
 }
-.documents {
+.slider-container {
   display: flex;
-  gap: 2em;
+  gap: 1.5em;
   overflow-x: auto;
   overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  padding: 1.5em;
   scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1.5em;
   scrollbar-width: none;
 }
-.documents::-webkit-scrollbar {
+.slider-container::-webkit-scrollbar {
   display: none;
 }
-.document-card {
+.slider-card {
   scroll-snap-align: start;
-  flex: 0 0 200px;
-  box-sizing: border-box;
-  background: #fff;
   border-radius: 25px;
-  padding-inline: 1.5em;
-  display: grid;
-  justify-items: center;
+  background: #fff;
 }
-.product-icon {
+.pdf-icon {
   padding: 1.5em;
   width: 100px;
   height: auto;
+  margin: 0 auto;
 }
-.documents a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+.slider-card a {
+  display: block;
+  margin: 0 auto;
+  min-width: 130px;
   border-style: solid;
   border-radius: 25px;
   border-color: #808249;
@@ -339,12 +333,26 @@ main {
   color: #808249;
   font-family: "larken";
   font-weight: 700;
-  margin: 1em;
+  text-align: center;
 }
-.documents a:hover,
-.documents a:focus-visible {
+.slider-card a:hover,
+.slider-card a:focus-visible {
   background-color: #808249;
   color: #ffffff;
+}
+.slider-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em;
+  color: #808249;
+  border: solid #808249;
+  background: transparent;
+  border-radius: 999px;
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+  cursor: pointer;
 }
 footer {
   grid-area: footer;
@@ -362,17 +370,6 @@ footer {
     grid-template-columns: 1fr 1fr;
     max-width: 1350px;
     margin: 0 auto;
-  }
-  .document-container {
-    max-width: 1350px;
-    margin: 0 auto;
-  }
-  .documents {
-    padding-inline: 0;
-    overflow-x: visible;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 3em;
   }
 }
 @media screen and (min-width: 992px) {
@@ -464,7 +461,23 @@ footer {
   .strength-animation .ae-animation {
     max-width: 150px;
   }
-  .document-container {
+  .block-two, .heading {
     text-align: center;
+  }
+  .slider-container {
+    gap: 3em;
+    padding-bottom: 3em;
+  }
+  .slider .pdf-icon {
+    width: 150px;
+  }
+}
+@media screen and (min-width: 1350px) {
+  .slider {
+    display: flex;
+    justify-content: center;
+  }
+  .slider-btn {
+    display: none;
   }
 }
